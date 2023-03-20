@@ -1,16 +1,6 @@
 const textQr = document.querySelector("#textQr");
 const qrcode = document.querySelector("#qrcode");
 
-function openNav() {
-    document.getElementById("my-nav").style.width = "400px"
-    document.getElementById("my-nav").style.height = "500px"
-}
-
-function closeNav() {
-    document.getElementById("my-nav").style.width = "0"
-    document.getElementById("my-nav").style.height = "0"
-}
-
 document.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
         genQRCode();
