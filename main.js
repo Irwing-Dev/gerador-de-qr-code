@@ -31,26 +31,17 @@ generateButton.addEventListener('click', () => {
 });
 
 downloadButton.addEventListener('click', () => {
-    let qrImage;
-    if (qrCodeContainer.querySelector('img')) {
-        qrImage = qrCodeContainer.querySelector('img').src;
-    } else if (qrCodeContainer.querySelector('canvas')) {
-        qrImage = qrCodeContainer.querySelector('canvas').toDataURL();
-    }
-
-    if (qrImage) {
-        fetch(qrImage)
-            .then(res => res.blob())
-            .then(blob => {
-                const url = URL.createObjectURL(blob);
-                const link = document.createElement('a');
-                link.href = url;
-                link.download = 'qrcode.png';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                URL.revokeObjectURL(url);
-            })
-            .catch(() => alert('[ERROR] Erro ao baixar o QR Code!'));
+    const canvas = qrCodeContainer.querySelector('canvas');
+    
+    if (canvas) {
+        canvas.toBlob((blob) => {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'qrcode.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(link.href);
+        });
     }
 });
