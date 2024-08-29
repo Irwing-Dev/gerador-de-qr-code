@@ -9,18 +9,20 @@
 </head>
 <body>
     <header>
-        <h3>Gerador de QR Code</h3>
+        <h3 class="logo">Gerador de QR Code</h3>
+        <a href="https://geradordesenhasaleatorias.netlify.app/" id="nav">Gerador de Senhas</a>
     </header>
     <main>
-        <div class="container">
-            <h2 style="color: white;">Pressione ENTER para gerar</h2>
-            <input type="text" placeholder="Digite aqui" id="textQr">
-            <div class="qr-content">
-                <img id="qrcode" src="">
-            </div>
+        <input type="text" id="text" placeholder="Digite algo">
+        <button id="generate">Gerar QR Code</button>
+        <div id="qrcode"></div>
+        <div><p id="error-msg"></p></div>
+        <div id="download-container">
+            <button id="download">Baixar</button>
         </div>
     </main>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
